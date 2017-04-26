@@ -49,7 +49,7 @@ public class Game
          System.out.println(e);
      }
  }
-    /**
+      /**
      * Create all the rooms and link their exits together.
      */
     private void createRooms()
@@ -124,6 +124,19 @@ public class Game
 
         exit.setExit("north", exit);
         currentRoom = entrance;  // start game at entrance
+    }
+       public void playWithFileInput() 
+    {            
+        printWelcome();
+        // Enter the main command loop.  Here we repeatedly read commands and
+        // execute them until the game is over.
+                
+        boolean finished = false;
+        while (! finished) {
+            Command command = parserWithFileInput.getCommand();
+            finished = processCommand(command);
+        }
+        System.out.println("Thank you for playing.  Good bye.");
     }
     /**
      *  Main play routine.  Loops until end of play.
